@@ -8,17 +8,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp",
-    "start": "nodemon web-server/server.js --watch ./web-client/src/*"
+    "start": "gulp && nodemon -e html,js,css --watch web-client/src/index.html web-server/server.js --delay 1"
   },
   "dependencies": {
-    "express": "4.16.4",
-    "gulp": "4.0.2",
-    "gulp-htmlmin": "5.0.1"
+    "express": "4.16.4"
   },
   "devDependencies": {
+    "gulp": "4.0.2",
     "gulp-clean": "0.4.0",
-    "gulp-copy": "4.0.1",
     "gulp-minify-inline": "1.1.0",
+    "gulp-htmlmin": "5.0.1",
     "nodemon": "1.19.0"
   }
 }

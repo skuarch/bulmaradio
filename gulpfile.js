@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
 var minifyInline = require('gulp-minify-inline');
-const gulpCopy = require('gulp-copy');
 var clean = require('gulp-clean');
 const fs = require('fs');
 
@@ -12,15 +11,28 @@ const files = [
   webClientFolder + '/src/.htaccess',
   webClientFolder + '/src/robots.txt',
   webClientFolder + '/src/favicon.ico',
-  webClientFolder + '/src/site.webmanifest'    
+  webClientFolder + '/src/site.webmanifest',
+  webClientFolder + '/src/android-chrome-192x192.png',
+  webClientFolder + '/src/android-chrome-512x512.png',
+  webClientFolder + '/src/favicon-16x16.png',
+  webClientFolder + '/src/favicon-32x32.png',
+  webClientFolder + '/src/apple-touch-icon.png',
+  webClientFolder + '/src/site.webmanifest',
 ];
 
 const images = [
-  webClientFolder + '/src/img/bulma-type-white.png'
+  webClientFolder + '/src/img/bulma-type-white.png',
+  webClientFolder + '/src/img/640x480.png',
+  webClientFolder + '/src/img/android-chrome-192x192.png',
+  webClientFolder + '/src/img/android-chrome-512x512.png'
 ];
 
 const js = [
   webClientFolder + '/src/js/app.js'
+];
+
+const css = [
+  webClientFolder + '/src/css/bulma.min.css'
 ];
 
 exports.default = (cb) => {
@@ -28,6 +40,7 @@ exports.default = (cb) => {
   exports.copy();
   exports.copyImg();
   exports.copyJs();
+  exports.copyCss();
   cb();
 };
 
@@ -62,6 +75,11 @@ exports.copyJs = () => {
     .pipe(gulp.dest('web-client/dist/js'));
 };
 
+exports.copyCss = () => {
+  return gulp.src(css)
+    .pipe(gulp.dest('web-client/dist/css'));
+};
+
 gulp.task('copy', function () {
   exports.copy();
 });
@@ -72,6 +90,10 @@ gulp.task('copy-img', function () {
 
 gulp.task('copy-js', function () {
   exports.copyJs();
+});
+
+gulp.task('copy-css', function () {
+  exports.copyCss();
 });
 
 gulp.task('minify', () => {
