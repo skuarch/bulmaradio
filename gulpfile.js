@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
-var minifyInline = require('gulp-minify-inline');
-var clean = require('gulp-clean');
+const minifyInline = require('gulp-minify-inline');
+const clean = require('gulp-clean');
 const fs = require('fs');
 
 const htmlSrc = './web-client/src/*.html';
