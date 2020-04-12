@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-  <title>Bulmaradio radio en vivo</title>
+  <title>Bulma radio radio en vivo</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
@@ -158,14 +158,13 @@
       }
     }
 
-    .bottom-player {
-      border-top: 1px solid #cacaca;
+    .bottom-player {      
       padding-top: 7px;
-      height: 8%;
-      background-color: white;
+      background-color: #f2f2f2;
       position: fixed;
       bottom: 0;
       width: 100%;
+      min-height: 70px;
     }
 
     audio {
@@ -176,8 +175,11 @@
       padding-left: 5px;
       padding-right: 5px;
     }
+
+    body {
+      overflow: hidden;
+    }
   </style>
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body>
@@ -228,7 +230,7 @@
       <div class="container has-text-centered">
         <h1>Escucha estaciones en vivo de todo el mundo en un mismo lugar, bulma radio</h1>
         <p class="subtitle">
-          Bulmaradio, online internet radio
+          Bulma radio, online internet radio
           <div class="columns">
             <div class="column"></div>
             <div class="column">
@@ -297,8 +299,9 @@
             <article class="tile is-child box">
               <p class="title">Publicidad</p>
               <figure class="image is-4by3">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1035423102956365"
-                  data-ad-slot="6105342490" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:250px"
+                  data-ad-client="ca-pub-1035423102956365" data-ad-slot="5488244876"></ins>
                 <script>
                   (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
@@ -355,7 +358,7 @@
               <article class="tile is-child box">
                 <p class="title">Reactor FM</p>
                 <button class="button is-primary"
-                  onclick="playStation('http://imer-edge1.cdnstream.com/1502_64'); stationTitle('Reactor FM')">
+                  onclick="playStation('https://s5.mexside.net:8119/stream'); stationTitle('Reactor FM')">
                   Play
                 </button>
                 <br />
@@ -473,7 +476,7 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        Bulmaradio 2019
+        Bulma radio 2019
       </p>
     </div>
   </footer>
