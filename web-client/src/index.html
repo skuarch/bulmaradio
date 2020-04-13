@@ -7,7 +7,7 @@
   <meta name="description"
     content="Escucha estaciones en vivo de todo el mundo en un mismo lugar. Online internet radio, las mejores estaciones de radio">
   <meta name="keywords"
-    content="mexico, Mexico, México, Mejico, radio formula, radio en vivo, radio universidad, radio disney, radio online, radio centro, radioactive, radiofrecuencia, radiorama, radio maria, radio amor, radio anime">  
+    content="mexico, Mexico, México, Mejico, radio formula, radio en vivo, radio universidad, radio disney, radio online, radio centro, radioactive, radiofrecuencia, radiorama, radio maria, radio amor, radio anime">
   <link href="css/bulma.min.css" rel="stylesheet" type="text/css">
   <link rel="canonical" href="https://bulmaradio.com" />
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -158,7 +158,7 @@
       }
     }
 
-    .bottom-player {      
+    .bottom-player {
       padding-top: 7px;
       background-color: #f2f2f2;
       position: fixed;
@@ -176,13 +176,78 @@
       padding-right: 5px;
     }
 
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 1px auto;
+      background-color: #fff;
+      border-radius: 100%;
+      -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+      animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes sk-scaleout {
+      0% {
+        -webkit-transform: scale(0)
+      }
+
+      100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sk-scaleout {
+      0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+    .spinner-center {
+      top: 45%;
+      left: 48%;
+      position: fixed;
+    }
+
+    .elements-center {
+      text-align: center !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .font-small {
+      font-size: 13px;
+    }
+
+    .margin-top {
+      margin-top: 22%;
+    }
+
     body {
       overflow: hidden;
     }
   </style>
 </head>
 
-<body>
+<body onload="onLoad(sendBrowserInfo)">
+  <div id="loaderPage" class="elements-center"
+    style="z-index: 100000; background-color: black; position: fixed; height: 100%; width: 100%; opacity: 0.9;overflow: hidden; display: none;">
+
+    <div class="margin-top">
+      <div class="spinner"></div>
+      <span class="font-small elements-center height-hundred" id="loaderPercentage">
+        cargando
+      </span>
+    </div>
+
+  </div>
   <section class="hero is-info is-medium">
     <ul class="circles">
       <li></li>
@@ -275,7 +340,7 @@
             <article class="tile is-child box">
               <p class="title">Los cuarenta principales</p>
               <button class="button is-link"
-                onclick="playStation('https://14963.live.streamtheworld.com/LOS40_MEXICO_SC'); stationTitle('Los cuarenta principales')">
+                onclick="startAudio('https://14963.live.streamtheworld.com/LOS40_MEXICO_SC'); stationTitle('Los cuarenta principales')">
                 Play
               </button>
               <br />
@@ -286,7 +351,7 @@
             <article class="tile is-child box">
               <p class="title">Beat FM</p>
               <button class="button is-primary"
-                onclick="playStation('https://17813.live.streamtheworld.com/XHSONFM_SC'); stationTitle('Beat FM')">
+                onclick="startAudio('https://17813.live.streamtheworld.com/XHSONFM_SC'); stationTitle('Beat FM')">
                 Play
               </button>
               <br />
@@ -316,7 +381,7 @@
             <article class="tile is-child box">
               <p class="title">La mexicana</p>
               <button class="button is-link"
-                onclick="playStation('http://tunein.gvstream.net:9040/;'); stationTitle('La mexicana')">
+                onclick="startAudio('http://tunein.gvstream.net:9040/;'); stationTitle('La mexicana')">
                 Play
               </button>
               <br />
@@ -327,7 +392,7 @@
             <article class="tile is-child box">
               <p class="title">Salsa Mexico</p>
               <button class="button is-link"
-                onclick="playStation('http://192.99.18.107:8106/;stream/1'); stationTitle('Salsa Mexico')">
+                onclick="startAudio('http://192.99.18.107:8106/;stream/1'); stationTitle('Salsa Mexico')">
                 Play
               </button>
               <br />
@@ -345,9 +410,9 @@
           <div class="tile">
             <div class="tile is-parent is-vertical">
               <article class="tile is-child box">
-                <p class="title">Universal FM</p>
+                <p class="title">Maxima 106.7 FM</p>
                 <button class="button is-link"
-                  onclick="playStation('https://20803.live.streamtheworld.com/XHRED_FM_SC'); stationTitle('Universal FM')">
+                  onclick="startAudio('http://192.99.16.17:3410/;'); stationTitle('Maxima 106.7 FM')">
                   Play
                 </button>
                 <br />
@@ -358,7 +423,7 @@
               <article class="tile is-child box">
                 <p class="title">Reactor FM</p>
                 <button class="button is-primary"
-                  onclick="playStation('https://s5.mexside.net:8119/stream'); stationTitle('Reactor FM')">
+                  onclick="startAudio('https://s5.mexside.net:8119/stream'); stationTitle('Reactor FM')">
                   Play
                 </button>
                 <br />
@@ -375,7 +440,7 @@
               <article class="tile is-child box">
                 <p class="title">Toluca 102.1</p>
                 <button class="button is-link"
-                  onclick="playStation('http://radio.spiritmedia.mx:8000/xhtom'); stationTitle('Toluca 102.1')">
+                  onclick="startAudio('http://radio.spiritmedia.mx:8000/xhtom'); stationTitle('Toluca 102.1')">
                   Play
                 </button>
                 <br />
@@ -384,9 +449,9 @@
                 <span class="tag is-success">Reggeaton</span>
               </article>
               <article class="tile is-child box">
-                <p class="title">Radio capital Toluca</p>
+                <p class="title">Pirata 89.3</p>
                 <button class="button is-primary"
-                  onclick="playStation('http://18233.live.streamtheworld.com/XECHAAC_SC'); stationTitle('Radio capital Toluca')">
+                  onclick="startAudio('http://18233.live.streamtheworld.com/XECHAAC_SC'); stationTitle('Pirata 89.3')">
                   Play
                 </button>
                 <br />
@@ -403,7 +468,7 @@
               <article class="tile is-child box">
                 <p class="title">Ultra Toluca</p>
                 <button class="button is-link"
-                  onclick="playStation('https://streamingcwsradio30.com:7001/stream.mp3'); stationTitle('Ultra Toluca')">
+                  onclick="startAudio('https://streamingcwsradio30.com:7001/stream.mp3'); stationTitle('Ultra Toluca')">
                   Play
                 </button>
                 <br />
@@ -414,7 +479,7 @@
               <article class="tile is-child box">
                 <p class="title">Bollocks Radio</p>
                 <button class="button is-primary"
-                  onclick="playStation('http://91.121.178.222:6588/;'); stationTitle('Bollocks Radio')">
+                  onclick="startAudio('http://91.121.178.222:6588/;'); stationTitle('Bollocks Radio')">
                   Play
                 </button>
                 <br />
@@ -433,7 +498,7 @@
         <article class="tile is-child box">
           <p class="title">La Z 107.3 FM</p>
           <button class="button is-link"
-            onclick="playStation('https://18503.live.streamtheworld.com/XEQR_FM_SC'); stationTitle('La Z 107.3 FM')">
+            onclick="startAudio('https://18503.live.streamtheworld.com/XEQR_FM_SC'); stationTitle('La Z 107.3 FM')">
             Play
           </button>
           <br />
@@ -444,9 +509,9 @@
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <p class="title">EXA 104.9</p>
+          <p class="title">EXA 104.9 FM</p>
           <button class="button is-link"
-            onclick="playStation('https://19173.live.streamtheworld.com/XHEXA_SC'); stationTitle('EXA 104.9')">
+            onclick="startAudio('https://19173.live.streamtheworld.com/XHEXA_SC'); stationTitle('EXA 104.9 FM')">
             Play
           </button>
           <br />
@@ -460,7 +525,7 @@
         <article class="tile is-child box">
           <p class="title">Radio Disney</p>
           <button class="button is-link"
-            onclick="playStation('https://16643.live.streamtheworld.com/XHPOPFM_SC'); stationTitle('Radio Disney')">
+            onclick="startAudio('https://16643.live.streamtheworld.com/XHPOPFM_SC'); stationTitle('Radio Disney')">
             Play
           </button>
           <br />
@@ -499,20 +564,84 @@
     var source = document.getElementById("audioSource");
     var audio = document.getElementById('audio');
     var title = document.getElementById('stationTitle');
-    stationTitle('da click en play para escuchar una estacion');
-    function playStation(urlStream) {
+    var loaderPercentage = document.getElementById('loaderPercentage');
+    var stream;
+    function startAudio(urlStream) {
+      stream = urlStream;
+      showElement('loaderPage');
       stopStation();
-      source.src = urlStream;
+      changeLoader();
+      prePlay();
+      canPlay();
+    }
+    stationTitle('da click en play para escuchar una estacion');
+    function prePlay() {
+      source.src = stream;
       audio.preload = 'auto';
       audio.load();
-      setTimeout(function () { audio.play(); }, 3300);
+    }
+    function playStation() {
+      setTimeout(function () {
+        audio.play();
+        hideElement('loaderPage');
+      }, 1250);
     }
     function stopStation() {
       audio.pause();
-      source.src = '';
+      source.src = '';      
     }
     function stationTitle(stationTitle) {
       title.innerHTML = stationTitle;
+    }
+    function setLoaderText(text) {
+      loaderPercentage.innerHTML = text;
+    }
+    function sendBrowserInfo() {
+      browserInfo = {
+        cookieEnabled: navigator.cookieEnabled
+      }
+    }
+    function canPlay() {
+      audio.oncanplaythrough = function () {
+        setLoaderText('ya casi');
+        audio.pause();
+        playStation();
+      };
+    }
+    function changeLoader() {
+      audio.onloadstart = function () {
+        setLoaderText('comenzando');
+      };
+      audio.ondurationchange = function () {
+        setLoaderText('espera');
+      };
+      audio.onloadedmetadata = function () {
+        setLoaderText('empezo a cargar');
+      };
+      audio.onloadeddata = function () {
+        setLoaderText('esperate');
+      };
+      audio.onprogress = function () {
+        setLoaderText('sigue esperando');
+      };
+      audio.oncanplay = function () {
+        setLoaderText('todavia no carga');
+      };
+      audio.onerror = function () {
+        setLoaderText('error!');
+        hideElement('loaderPage');
+      };
+    }
+    function onLoad(callback) {
+      callback();
+    }
+    function hideElement(elementId) {
+      var x = document.getElementById(elementId);
+      x.style.display = "none";
+    }
+    function showElement(elementId) {
+      var x = document.getElementById(elementId);
+      x.style.display = "block";
     }
   </script>
 </body>
