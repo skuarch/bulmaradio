@@ -293,7 +293,7 @@
     </div>
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1>Escucha estaciones en vivo de todo el mundo en un mismo lugar, bulma radio</h1>
+        <h1>Escucha estaciones en vivo de todo el mundo en un mismo lugar, rock, pop, clasico y mas aqui.</h1>
         <p class="subtitle">
           Bulma radio, online internet radio
           <div class="columns">
@@ -438,9 +438,9 @@
           <div class="tile">
             <div class="tile is-parent is-vertical">
               <article class="tile is-child box">
-                <p class="title">Toluca 102.1</p>
+                <p class="title">Neurotik 102.1</p>
                 <button class="button is-link"
-                  onclick="startAudio('http://radio.spiritmedia.mx:8000/xhtom'); stationTitle('Toluca 102.1')">
+                  onclick="startAudio('http://radio.spiritmedia.mx:8000/xhtom'); stationTitle('Neurotik 102.1')">
                   Play
                 </button>
                 <br />
@@ -498,7 +498,7 @@
         <article class="tile is-child box">
           <p class="title">La Z 107.3 FM</p>
           <button class="button is-link"
-            onclick="startAudio('https://18503.live.streamtheworld.com/XEQR_FM_SC'); stationTitle('La Z 107.3 FM')">
+            onclick="startAudio('https://18493.live.streamtheworld.com/XEQR_FM_SC'); stationTitle('La Z 107.3 FM')">
             Play
           </button>
           <br />
@@ -565,14 +565,30 @@
     var audio = document.getElementById('audio');
     var title = document.getElementById('stationTitle');
     var loaderPercentage = document.getElementById('loaderPercentage');
+    var formats = {
+      mp3: 'audio/mpeg',
+      mp4: 'audio/mp4',
+      wav: 'audio/wav',
+      ogg: 'audio/ogg'
+    };
     var stream;
     function startAudio(urlStream) {
       stream = urlStream;
-      showElement('loaderPage');
-      stopStation();
-      changeLoader();
-      prePlay();
-      canPlay();
+      if (isPlayable()) {
+        showElement('loaderPage');
+        stopStation();
+        changeLoader();
+        prePlay();
+        canPlay();
+      }
+    }
+    function isPlayable() {
+      let playable = isMediaSupported(formats.mp3);
+      if (!playable) {
+        stationTitle('media not supported by your browser');        
+        return playable;
+      }
+      return playable;
     }
     stationTitle('da click en play para escuchar una estacion');
     function prePlay() {
@@ -588,7 +604,7 @@
     }
     function stopStation() {
       audio.pause();
-      source.src = '';      
+      source.src = '';
     }
     function stationTitle(stationTitle) {
       title.innerHTML = stationTitle;
@@ -607,6 +623,9 @@
         audio.pause();
         playStation();
       };
+    }
+    function isMediaSupported(contenType) {
+      return audio.canPlayType(contenType);
     }
     function changeLoader() {
       audio.onloadstart = function () {
@@ -634,6 +653,7 @@
     }
     function onLoad(callback) {
       callback();
+      isMediaSupported();
     }
     function hideElement(elementId) {
       var x = document.getElementById(elementId);
