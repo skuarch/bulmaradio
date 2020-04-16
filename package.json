@@ -8,10 +8,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp",
-    "start": "gulp && nodemon -e html,js,css --watch web-client/src/index.html web-server/server.js --delay 1"
+    "start": "gulp && nodemon -e web-client/html,web-client/js,web-client/css --watch web-client/src/index.html web-server/server.js && node web-server/server.js"
   },
   "dependencies": {
-    "express": "4.16.4"
+    "express": "4.16.4",
+    "morgan": "1.10.0"
   },
   "devDependencies": {
     "gulp": "4.0.2",
