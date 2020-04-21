@@ -614,8 +614,27 @@
     }
     function sendBrowserInfo() {
       browserInfo = {
-        cookieEnabled: navigator.cookieEnabled
+        pageon: window.location.pathname,
+        referrer:document.referrer, 
+        cookieEnabled: navigator.cookieEnabled,
+        appName: navigator.appName,
+        product: navigator.product,
+        appVersion: navigator.appVersion,
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        platform: navigator.platform,
+        screenWith: screen.width,
+        screenHeight: screen.height,
+        screenAvailWidth:screen.availWidth,
+        screenAvailHeight:screen.availHeight,
+        systemLanguage: navigator.systemLanguage,
+        appCodeName: navigator.appCodeName
       }
+      console.log('object', JSON.stringify(browserInfo));
+      var xhr = new XMLHttpRequest();      
+      xhr.open('POST', '/clientInfo.php', true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify(browserInfo));
     }
     function canPlay() {
       audio.oncanplaythrough = function () {
