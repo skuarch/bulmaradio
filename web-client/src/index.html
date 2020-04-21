@@ -236,7 +236,7 @@
   </style>
 </head>
 
-<body onload="onLoad(sendBrowserInfo)">
+<body onload="onLoad(sendClientInfo)">
   <div id="loaderPage" class="elements-center"
     style="z-index: 100000; background-color: black; position: fixed; height: 100%; width: 100%; opacity: 0.9;overflow: hidden; display: none;">
 
@@ -612,8 +612,8 @@
     function setLoaderText(text) {
       loaderPercentage.innerHTML = text;
     }
-    function sendBrowserInfo() {
-      browserInfo = {
+    function sendClientInfo() {
+      clientInfo = {
         pageon: window.location.pathname,
         referrer:document.referrer, 
         cookieEnabled: navigator.cookieEnabled,
@@ -630,11 +630,11 @@
         systemLanguage: navigator.systemLanguage,
         appCodeName: navigator.appCodeName
       }
-      console.log('object', JSON.stringify(browserInfo));
+      console.log('object', JSON.stringify(clientInfo));
       var xhr = new XMLHttpRequest();      
-      xhr.open('POST', '/clientInfo.php', true);
+      xhr.open('POST', '/assets/clientInfo.php', true);
       xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.send(JSON.stringify(browserInfo));
+      xhr.send(JSON.stringify(clientInfo));
     }
     function canPlay() {
       audio.oncanplaythrough = function () {

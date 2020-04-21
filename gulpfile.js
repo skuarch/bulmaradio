@@ -7,6 +7,7 @@ const fs = require('fs');
 const htmlSrc = './web-client/src/*.html';
 const distFolder = './web-client/dist';
 const webClientFolder = './web-client';
+const assetsFolder = './web-client/src/assets';
 const files = [
   webClientFolder + '/src/.htaccess',
   webClientFolder + '/src/robots.txt',
@@ -35,12 +36,17 @@ const css = [
   webClientFolder + '/src/css/bulma.min.css'
 ];
 
+const assets = [
+  assetsFolder + '/clientInfo.php'
+];
+
 exports.default = (cb) => {
   exports.minify();
   exports.copy();
   exports.copyImg();
   exports.copyJs();
   exports.copyCss();
+  exports.copyAssets();
   cb();
 };
 
@@ -80,6 +86,11 @@ exports.copyCss = () => {
     .pipe(gulp.dest('web-client/dist/css'));
 };
 
+exports.copyAssets = () => {
+  return gulp.src(assets)
+    .pipe(gulp.dest('web-client/dist/assets'));
+};
+
 gulp.task('copy', function () {
   exports.copy();
 });
@@ -94,6 +105,10 @@ gulp.task('copy-js', function () {
 
 gulp.task('copy-css', function () {
   exports.copyCss();
+});
+
+gulp.task('copy-assets', function () {
+  exports.copyAssets();
 });
 
 gulp.task('minify', () => {
