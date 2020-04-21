@@ -236,7 +236,7 @@
   </style>
 </head>
 
-<body onload="onLoad(sendBrowserInfo)">
+<body onload="onLoad(sendClientInfo)">
   <div id="loaderPage" class="elements-center"
     style="z-index: 100000; background-color: black; position: fixed; height: 100%; width: 100%; opacity: 0.9;overflow: hidden; display: none;">
 
@@ -612,7 +612,7 @@
     function setLoaderText(text) {
       loaderPercentage.innerHTML = text;
     }
-    function sendBrowserInfo() {
+    function sendClientInfo() {
       clientInfo = {
         pageon: window.location.pathname,
         referrer:document.referrer, 
