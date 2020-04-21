@@ -613,7 +613,7 @@
       loaderPercentage.innerHTML = text;
     }
     function sendBrowserInfo() {
-      browserInfo = {
+      clientInfo = {
         pageon: window.location.pathname,
         referrer:document.referrer, 
         cookieEnabled: navigator.cookieEnabled,
@@ -630,11 +630,11 @@
         systemLanguage: navigator.systemLanguage,
         appCodeName: navigator.appCodeName
       }
-      console.log('object', JSON.stringify(browserInfo));
+      console.log('object', JSON.stringify(clientInfo));
       var xhr = new XMLHttpRequest();      
-      xhr.open('POST', '/clientInfo.php', true);
+      xhr.open('POST', '/assets/clientInfo.php', true);
       xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.send(JSON.stringify(browserInfo));
+      xhr.send(JSON.stringify(clientInfo));
     }
     function canPlay() {
       audio.oncanplaythrough = function () {
