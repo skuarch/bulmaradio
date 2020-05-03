@@ -295,8 +295,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1>Escucha estaciones en vivo de todo el mundo en un mismo lugar, rock, pop, clasico y mas aqui.</h1>
-        <p class="subtitle">
+        <div class="subtitle">
           Bulma radio, online internet radio
+          <br/><br/>
           <div class="columns">
             <div class="column"></div>
             <div class="column">
@@ -304,7 +305,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
             </div>
             <div class="column"></div>
           </div>
-        </p>
+        </div>
       </div>
     </div>
     <div class="hero-foot">
@@ -422,9 +423,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
                 <span class="tag is-success">Reggeaton</span>
               </article>
               <article class="tile is-child box">
-                <p class="title">Reactor FM</p>
+                <p class="title">Irock 247</p>
                 <button class="button is-primary"
-                  onclick="startAudio('https://s5.mexside.net:8119/stream'); stationTitle('Reactor FM')">
+                  onclick="startAudio('https://streamer.radio.co/s493283a7e/listen'); stationTitle('Irock 247')">
                   Play
                 </button>
                 <br />
@@ -478,9 +479,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
                 <span class="tag is-success">Reggeaton</span>
               </article>
               <article class="tile is-child box">
-                <p class="title">Bollocks Radio</p>
+                <p class="title">Rock Stock Bar</p>
                 <button class="button is-primary"
-                  onclick="startAudio('http://91.121.178.222:6588/;'); stationTitle('Bollocks Radio')">
+                  onclick="startAudio('http://51.79.50.36:8000/stream'); stationTitle('Rock Stock Bar')">
                   Play
                 </button>
                 <br />
@@ -553,8 +554,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
           <div class="column has-text-centered">
             <span id="stationTitle"></span>
             <br />
-            <audio controls id="audio" preload="auto">
-              <source id="audioSource" src="">
+            <audio controls id="audio" preload="auto" onerror="onPlayerError">
+              <source id="audioSource" src="https://streamer.radio.co/s493283a7e/listen">
+                tu navegador no soporta reproduccion de audio.
             </audio>
           </div>
         </div>
@@ -562,8 +564,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
     </div>
   </div>
   <script>
-    var source = document.getElementById("audioSource");
-    var audio = document.getElementById('audio');
+    var source = document.getElementById("audioSource");    
     var title = document.getElementById('stationTitle');
     var loaderPercentage = document.getElementById('loaderPercentage');
     var formats = {
@@ -573,7 +574,57 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       ogg: 'audio/ogg'
     };
     var stream;
-    function startAudio(urlStream) {
+    var audio = document.getElementById('audio');
+
+    audio.addEventListener('error', function (e) { console.log('no mames 1');       
+      var noSourcesLoaded = (this.networkState === HTMLMediaElement.NETWORK_NO_SOURCE);   
+      console.log('HTMLMediaElement', HTMLMediaElement);    
+      onPlayerError();
+    }, true);
+
+    function changeLoader() {console.log('no mames 2'); 
+      audio.onloadstart = function () {console.log('no mames 3'); 
+        setLoaderText('comenzando');
+      };
+      audio.ondurationchange = function () {console.log('no mames 4'); 
+        setLoaderText('espera');
+      };
+      audio.onloadedmetadata = function () {console.log('no mames 5'); 
+        setLoaderText('empezo a cargar');
+      };
+      audio.onloadeddata = function () {console.log('no mames 6'); 
+        setLoaderText('esperate');
+      };
+      audio.onprogress = function () {console.log('no mames 7'); 
+        setLoaderText('sigue esperando');
+      };
+      audio.oncanplay = function () {console.log('no mames 8'); 
+        setLoaderText('todavia no carga');
+      };
+      audio.onerror = function () {console.log('no mames 9'); 
+        onPlayerError();  
+      };
+    }
+    
+    function canPlay() {
+      audio.oncanplaythrough = function () {console.log('no mames 10'); 
+        setLoaderText('ya casi');
+        audio.pause();
+        playStation();
+      };
+    }
+
+    function isMediaSupported(contenType) {console.log('no mames 11'); 
+      return audio.canPlayType(contenType);
+    }
+
+    function onPlayerError() {        console.log('no mames 12'); 
+        setLoaderText('error!');
+        hideElement('loaderPage');  
+        stationTitle('error, no se pudo reproducir la estacion');      
+    }
+
+    function startAudio(urlStream) {console.log('no mames 13'); 
       stream = urlStream;
       if (isPlayable()) {
         showElement('loaderPage');
@@ -583,7 +634,8 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
         canPlay();
       }
     }
-    function isPlayable() {
+
+    function isPlayable() {console.log('no mames 14'); 
       let playable = isMediaSupported(formats.mp3);
       if (!playable) {
         stationTitle('media not supported by your browser');        
@@ -591,28 +643,33 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       }
       return playable;
     }
-    stationTitle('da click en play para escuchar una estacion');
-    function prePlay() {
+
+    function prePlay() {console.log('no mames 15'); 
       source.src = stream;
       audio.preload = 'auto';
       audio.load();
     }
-    function playStation() {
+
+    function playStation() {console.log('no mames 16'); 
       setTimeout(function () {
         audio.play();
         hideElement('loaderPage');
       }, 1250);
     }
-    function stopStation() {
+
+    function stopStation() {console.log('no mames 17'); 
       audio.pause();
       source.src = '';
     }
+
     function stationTitle(stationTitle) {
       title.innerHTML = stationTitle;
     }
+
     function setLoaderText(text) {
       loaderPercentage.innerHTML = text;
     }
+
     function sendClientInfo() {
       clientInfo = {
         pageon: window.location.pathname,
@@ -630,59 +687,29 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
         screenAvailHeight:screen.availHeight,
         systemLanguage: navigator.systemLanguage,
         appCodeName: navigator.appCodeName
-      }
-      console.log('object', JSON.stringify(clientInfo));
+      }      
       var xhr = new XMLHttpRequest();      
       xhr.open('POST', '/assets/clientInfo.php', true);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify(clientInfo));
     }
-    function canPlay() {
-      audio.oncanplaythrough = function () {
-        setLoaderText('ya casi');
-        audio.pause();
-        playStation();
-      };
+    function onLoad(callback) {console.log('no mames 0'); 
+        callback();
+        stationTitle('da click en play para escuchar la estacion');
     }
-    function isMediaSupported(contenType) {
-      return audio.canPlayType(contenType);
-    }
-    function changeLoader() {
-      audio.onloadstart = function () {
-        setLoaderText('comenzando');
-      };
-      audio.ondurationchange = function () {
-        setLoaderText('espera');
-      };
-      audio.onloadedmetadata = function () {
-        setLoaderText('empezo a cargar');
-      };
-      audio.onloadeddata = function () {
-        setLoaderText('esperate');
-      };
-      audio.onprogress = function () {
-        setLoaderText('sigue esperando');
-      };
-      audio.oncanplay = function () {
-        setLoaderText('todavia no carga');
-      };
-      audio.onerror = function () {
-        setLoaderText('error!');
-        hideElement('loaderPage');
-      };
-    }
-    function onLoad(callback) {
-      callback();
-      isMediaSupported();
-    }
+
     function hideElement(elementId) {
-      var x = document.getElementById(elementId);
-      x.style.display = "none";
+        var x = document.getElementById(elementId);
+        x.style.display = "none";
     }
+
     function showElement(elementId) {
-      var x = document.getElementById(elementId);
-      x.style.display = "block";
+        var x = document.getElementById(elementId);
+        x.style.display = "block";
     }
+
+    stationTitle('da click en play para escuchar una estacion');
+
   </script>
 </body>
 
