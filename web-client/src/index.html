@@ -349,6 +349,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
               <span class="tag is-light">Mexico</span>
               <span class="tag is-warning">Pop</span>
               <span class="tag is-success">Reggeaton</span>
+              <a class="tag is-info" href="/station.html">Mas</a>
             </article>
             <article class="tile is-child box">
               <p class="title">Beat FM</p>
@@ -582,49 +583,49 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       onPlayerError();
     }, true);
 
-    function changeLoader() {console.log('no mames 2'); 
-      audio.onloadstart = function () {console.log('no mames 3'); 
+    function changeLoader() {
+      audio.onloadstart = function () {
         setLoaderText('comenzando');
       };
-      audio.ondurationchange = function () {console.log('no mames 4'); 
+      audio.ondurationchange = function () {
         setLoaderText('espera');
       };
-      audio.onloadedmetadata = function () {console.log('no mames 5'); 
+      audio.onloadedmetadata = function () {
         setLoaderText('empezo a cargar');
       };
-      audio.onloadeddata = function () {console.log('no mames 6'); 
+      audio.onloadeddata = function () {
         setLoaderText('esperate');
       };
-      audio.onprogress = function () {console.log('no mames 7'); 
+      audio.onprogress = function () {
         setLoaderText('sigue esperando');
       };
-      audio.oncanplay = function () {console.log('no mames 8'); 
+      audio.oncanplay = function () {
         setLoaderText('todavia no carga');
       };
-      audio.onerror = function () {console.log('no mames 9'); 
+      audio.onerror = function () {
         onPlayerError();  
       };
     }
     
     function canPlay() {
-      audio.oncanplaythrough = function () {console.log('no mames 10'); 
+      audio.oncanplaythrough = function () {
         setLoaderText('ya casi');
         audio.pause();
         playStation();
       };
     }
 
-    function isMediaSupported(contenType) {console.log('no mames 11'); 
+    function isMediaSupported(contenType) {
       return audio.canPlayType(contenType);
     }
 
-    function onPlayerError() {        console.log('no mames 12'); 
+    function onPlayerError() {
         setLoaderText('error!');
         hideElement('loaderPage');  
         stationTitle('error, no se pudo reproducir la estacion');      
     }
 
-    function startAudio(urlStream) {console.log('no mames 13'); 
+    function startAudio(urlStream) {
       stream = urlStream;
       if (isPlayable()) {
         showElement('loaderPage');
@@ -635,7 +636,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       }
     }
 
-    function isPlayable() {console.log('no mames 14'); 
+    function isPlayable() {
       let playable = isMediaSupported(formats.mp3);
       if (!playable) {
         stationTitle('media not supported by your browser');        
@@ -644,20 +645,20 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       return playable;
     }
 
-    function prePlay() {console.log('no mames 15'); 
+    function prePlay() {
       source.src = stream;
       audio.preload = 'auto';
       audio.load();
     }
 
-    function playStation() {console.log('no mames 16'); 
+    function playStation() {
       setTimeout(function () {
         audio.play();
         hideElement('loaderPage');
       }, 1250);
     }
 
-    function stopStation() {console.log('no mames 17'); 
+    function stopStation() {
       audio.pause();
       source.src = '';
     }
@@ -693,7 +694,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify(clientInfo));
     }
-    function onLoad(callback) {console.log('no mames 0'); 
+    function onLoad(callback) {
         callback();
         stationTitle('da click en play para escuchar la estacion');
     }
