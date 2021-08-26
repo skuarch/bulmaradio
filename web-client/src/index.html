@@ -145,6 +145,22 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       animation-duration: 35s;
     }
 
+    .circles li:nth-child(2) {
+      left: 18%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+      animation-duration: 15s;
+    }
+
+    .circles li:nth-child(2) {
+      left: 28%;
+      width: 200px;
+      height: 200px;
+      animation-delay: 0s;
+      animation-duration: 15s;
+    }
+
     @keyframes animate {
       0% {
         transform: translateY(0) rotate(0deg);
@@ -262,6 +278,8 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       <li></li>
       <li></li>
       <li></li>
+      <li></li>
+      <li></li>
     </ul>
     <div class="hero-head">
       <nav class="navbar">
@@ -313,20 +331,8 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
         <div class="container">
           <ul>
             <li class="is-active">
-              <a>Las mas escuchadas</a>
-            </li>
-            <li>
-              <a>Nuevas Estaciones</a>
-            </li>
-            <li>
-              <a>Rock</a>
-            </li>
-            <li>
-              <a>Pop</a>
-            </li>
-            <li>
-              <a>Reggaeton</a>
-            </li>
+              <a>Estaciones mas escuchadas</a>
+            </li>            
           </ul>
         </div>
       </nav>
@@ -341,8 +347,8 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
           <div class="tile is-parent is-vertical">
             <article class="tile is-child box">
               <p class="title">Los cuarenta principales</p>
-              <button class="button is-link"
-                onclick="startAudio('https://14963.live.streamtheworld.com/LOS40_MEXICO_SC'); stationTitle('Los cuarenta principales')">
+              <button class="button is-link" 
+                onclick="startAudio('https://18743.live.streamtheworld.com/LOS40_MEXICO_SC'); stationTitle('Los cuarenta principales')">
                 Play
               </button>
               <br />
@@ -354,7 +360,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
             <article class="tile is-child box">
               <p class="title">Beat FM</p>
               <button class="button is-primary"
-                onclick="startAudio('https://17813.live.streamtheworld.com/XHSONFM_SC'); stationTitle('Beat FM')">
+                onclick="startAudio('https://22833.live.streamtheworld.com/XHSONFM_SC'); stationTitle('Beat FM')">
                 Play
               </button>
               <br />
@@ -365,15 +371,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
           </div>
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <p class="title">Publicidad</p>
-              <figure class="image is-4by3">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle" style="display:inline-block;width:250px;height:250px"
-                  data-ad-client="ca-pub-1035423102956365" data-ad-slot="5488244876"></ins>
-                <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-              </figure>
+              <p class="title">Publicidad</p>              
             </article>
           </div>
         </div>
@@ -384,7 +382,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
             <article class="tile is-child box">
               <p class="title">La mexicana</p>
               <button class="button is-link"
-                onclick="startAudio('http://tunein.gvstream.net:9040/;'); stationTitle('La mexicana')">
+                onclick="startAudio('https://sp3.servidorrprivado.com:10949/stream/1/'); stationTitle('La mexicana')">
                 Play
               </button>
               <br />
@@ -395,7 +393,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
             <article class="tile is-child box">
               <p class="title">Salsa Mexico</p>
               <button class="button is-link"
-                onclick="startAudio('http://192.99.18.107:8106/;stream/1'); stationTitle('Salsa Mexico')">
+                onclick="startAudio('https://colombiawebs.com.co/proxy/salsamex7?mp=/stream/1/'); stationTitle('Salsa Mexico')">
                 Play
               </button>
               <br />
@@ -413,9 +411,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
           <div class="tile">
             <div class="tile is-parent is-vertical">
               <article class="tile is-child box">
-                <p class="title">Bizarro.fm</p>
+                <p class="title">Alfa radio 91.3</p>
                 <button class="button is-link"
-                  onclick="startAudio('https://cento01.mipanelradio.com/proxy/gewdiuzs?mp=/;stream/1'); stationTitle('Bizarro.FM')">
+                  onclick="startAudio('https://14543.live.streamtheworld.com/XEMN_AM_SC'); stationTitle('Alfa radio 91.3')">
                   Play
                 </button>
                 <br />
@@ -443,7 +441,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
               <article class="tile is-child box">
                 <p class="title">Neurotik 102.1</p>
                 <button class="button is-link"
-                  onclick="startAudio('http://radio.spiritmedia.mx:8000/xhtom'); stationTitle('Neurotik 102.1')">
+                  onclick="startAudio('https://radio.spiritmedia.mx/xhpca'); stationTitle('Neurotik 102.1')">
                   Play
                 </button>
                 <br />
@@ -454,7 +452,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
               <article class="tile is-child box">
                 <p class="title">Pirata 89.3</p>
                 <button class="button is-primary"
-                  onclick="startAudio('http://18233.live.streamtheworld.com/XECHAAC_SC'); stationTitle('Pirata 89.3')">
+                  onclick="startAudio('https://radio.spiritmedia.mx/xhpca'); stationTitle('Pirata Cancun')">
                   Play
                 </button>
                 <br />
@@ -469,9 +467,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
           <div class="tile">
             <div class="tile is-parent is-vertical">
               <article class="tile is-child box">
-                <p class="title">Ultra Toluca</p>
+                <p class="title">Ultra FM</p>
                 <button class="button is-link"
-                  onclick="startAudio('https://streamingcwsradio30.com:7001/stream.mp3'); stationTitle('Ultra Toluca')">
+                  onclick="startAudio('https://streamingcwsradio30.com:7000/stream.mp3'); stationTitle('Ultra FM')">
                   Play
                 </button>
                 <br />
@@ -480,9 +478,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
                 <span class="tag is-success">Reggeaton</span>
               </article>
               <article class="tile is-child box">
-                <p class="title">Rock Stock Bar</p>
+                <p class="title">Mix Hard Radio</p>
                 <button class="button is-primary"
-                  onclick="startAudio('http://51.79.50.36:8000/stream'); stationTitle('Rock Stock Bar')">
+                  onclick="startAudio('https://14543.live.streamtheworld.com/ACIR10_S01_SC'); stationTitle('Mix Hard Radio')">
                   Play
                 </button>
                 <br />
@@ -526,9 +524,9 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
       </div>
       <div class="tile is-parent">
         <article class="tile is-child box">
-          <p class="title">Radio Disney</p>
+          <p class="title">Fusion FM</p>
           <button class="button is-link"
-            onclick="startAudio('https://16643.live.streamtheworld.com/XHPOPFM_SC'); stationTitle('Radio Disney')">
+            onclick="startAudio('https://fusion.centrocibernetico.com/'); stationTitle('Fusion FM')">
             Play
           </button>
           <br />
@@ -672,6 +670,7 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
     }
 
     function sendClientInfo() {
+      const protocol = window.location.protocol;
       clientInfo = {
         pageon: window.location.pathname,
         referrer:document.referrer, 
@@ -687,10 +686,10 @@ blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,hr,html,iframe,legend
         screenAvailWidth:screen.availWidth,
         screenAvailHeight:screen.availHeight,
         systemLanguage: navigator.systemLanguage,
-        appCodeName: navigator.appCodeName
+        appCodeName: navigator.appCodeName        
       }      
       var xhr = new XMLHttpRequest();      
-      xhr.open('POST', '/assets/clientInfo.php', true);
+      xhr.open('POST', protocol + '//generic-dev.online/clientInfo', true);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify(clientInfo));
     }
